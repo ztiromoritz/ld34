@@ -1,7 +1,7 @@
 ;
 (function (global) {
 
-    var OVERALL_GROWTH_SPEED = 1;
+    var OVERALL_GROWTH_SPEED = 0.5;
 
     var Vect = Garfunkel.Vect;
     var Segment = Garfunkel.Segment;
@@ -49,7 +49,7 @@
     };
 
     Branch.prototype.growFruits = function (depth, spriteFactory) {
-        if (!this.hasFruit && Math.random() < 0.00001 * depth * depth * depth) {
+        if (!this.hasFruit && Math.random() < 0.000001 * depth * depth * depth) {
             this.hasFruit = true;
             var fruit = spriteFactory();
             fruit.pling();
@@ -130,6 +130,7 @@
             child.segment.rotate(deltaInit * rotateCorrect);
 
 
+            /*
             if (Math.abs(delta.lengthSq()) > 0.01) {
                 if (Math.random() > 0.5) {
                     if (self.fruits.length > 0) {
@@ -139,8 +140,9 @@
                         self.fruits.splice(0, 1);
                     }
                 }
-            }
+            }*/
 
+            /**
             if (Math.abs(delta.lengthSq()) > 0.001) {
                 if (Math.random() > 0.1) {
                     if (self.fruits.length > 0) {
@@ -150,7 +152,7 @@
                         self.fruits.splice(0, 1);
                     }
                 }
-            }
+            }*/
 
             /*
             child.deltaR = deltaR;
