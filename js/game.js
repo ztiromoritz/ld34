@@ -177,14 +177,27 @@
         });
 
 
+        function testDropFruit(branch){
+            if(Math.random() <0.05 && branch.fruits.length > 0){
+                console.log('drop');
+                var fruit = branch.fruits[0];
+                SND.pp.play();
+                fruit.sprite.connected = false;
+                branch.fruits.splice(0, 1);
+                branch.hasFruit = false;
+            }
+        }
+
         if (game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
             tree.segment.rotate(-Math.radians(2));
             tree.forEach(function (branch, parent, depth) {
+                testDropFruit(branch);
                 //branch.segment.rotate(-Math.radians(1 / 100* depth));
             });
         } else if (game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
             tree.segment.rotate(+Math.radians(2));
             tree.forEach(function (branch, parent, depth) {
+                testDropFruit(branch);
                 //branch.segment.rotate(+Math.radians(1 / 100* depth));
             });
         }
